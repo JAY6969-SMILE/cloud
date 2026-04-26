@@ -1,0 +1,146 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth - Job Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="nav">
+    <a href="./index.html" class="logo">JOBPORTAL</a>
+    <a href="./jobs.html" class="nav-link">Jobs</a>
+  </header>
+
+  <main class="container narrow">
+    <h1 class="page-title">Access</h1>
+    <p class="muted">Login or create your account.</p>
+
+    <div class="toggle-pill">
+      <button id="loginToggle" class="active" type="button">LOGIN</button>
+      <button id="registerToggle" type="button">REGISTER</button>
+    </div>
+
+    <form id="authForm" class="card">
+      <div id="nameWrap" class="field hidden">
+        <label>Name</label>
+        <input id="name" type="text" placeholder="Your name">
+      </div>
+
+      <div id="roleWrap" class="field hidden">
+        <label>Role</label>
+        <div class="toggle-pill role-pill">
+          <button id="jobseekerRole" class="active" type="button">JOBSEEKER</button>
+          <button id="employerRole" type="button">EMPLOYER</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input id="email" type="email" required placeholder="you@example.com">
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input id="password" type="password" required placeholder="********">
+      </div>
+
+      <button class="btn btn-primary full" type="submit" id="submitBtn">Login</button>
+      <p id="authMsg" class="muted"></p>
+    </form>
+  </main>
+
+  <script type="module">
+    import { apiFetch, setToken, setRole } from './app.js';
+
+    const state = { mode: 'login', role: 'JOBSEEKER' };
+
+    const loginToggle = document.getElementById('loginToggle');
+    const registerToggle = document.getElementById('registerToggle');
+    const nameWrap = document.getElementById('nameWrap');
+    const roleWrap = document.getElementById('roleWrap');
+    const submitBtn = document.getElementById('submitBtn');
+    const authMsg = document.getElementById('authMsg');
+
+    const jobseekerRole = document.getElementById('jobseekerRole');
+    const employerRole = document.getElementById('employerRole');
+
+    function setMode(mode) {
+      state.mode = mode;
+      const register = mode === 'register';
+      loginToggle.classList.toggle('active', !register);
+      registerToggle.classList.toggle('active', register);
+      nameWrap.classList.toggle('hidden', !register);
+      roleWrap.classList.toggle('hidden', !register);
+      submitBtn.textContent = register ? 'Register' : 'Login';
+      authMsg.textContent = '';
+    }
+
+    function setRoleUI(role) {
+      state.role = role;
+      jobseekerRole.classList.toggle('active', role === 'JOBSEEKER');
+      employerRole.classList.toggle('active', role === 'EMPLOYER');
+    }
+
+    loginToggle.addEventListener('click', () => setMode('login'));
+    registerToggle.addEventListener('click', () => setMode('register'));
+    jobseekerRole.addEventListener('click', () => setRoleUI('JOBSEEKER'));
+    employerRole.addEventListener('click', () => setRoleUI('EMPLOYER'));
+
+    document.getElementById('authForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      authMsg.textContent = 'Working...';
+      try {
+        let data;
+        if (state.mode === 'register') {
+          data = await apiFetch('/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: document.getElementById('name').value.trim(),
+              email: document.getElementById('email').value.trim(),
+              password: document.getElementById('password').value,
+              role: state.role
+            })
+          });
+          setRole(state.role);
+        } else {
+          data = await apiFetch('/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: document.getElementById('email').value.trim(),
+              password: document.getElementById('password').value
+            })
+          });
+          const email = document.getElementById('email').value.trim();
+          const rememberedRole = localStorage.getItem('roleByEmail:' + email);
+          if (rememberedRole) setRole(rememberedRole);
+        }
+
+        if (!data || !data.token) {
+          throw new Error('Token missing in response');
+        }
+
+        setToken(data.token);
+        if (state.mode === 'register') {
+          localStorage.setItem('roleByEmail:' + document.getElementById('email').value.trim(), state.role);
+        }
+
+        authMsg.textContent = 'Success. Redirecting...';
+        const role = localStorage.getItem('role');
+        location.href = role === 'EMPLOYER' ? './post-job.html' : './jobs.html';
+      } catch (err) {
+        authMsg.textContent = err.message || 'Auth failed';
+      }
+    });
+
+    setMode('login');
+    setRoleUI('JOBSEEKER');
+  </script>
+</body>
+</html>

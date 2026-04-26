@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobs - Job Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="nav">
+    <a href="./index.html" class="logo">JOBPORTAL</a>
+    <div class="row-tight">
+      <a href="./auth.html" class="nav-link">Auth</a>
+      <button id="logoutBtn" class="btn btn-ghost tiny" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Open Jobs</h1>
+    <p class="muted">Click any role to view details and apply.</p>
+    <section id="jobsGrid" class="grid"></section>
+  </main>
+
+  <script type="module" src="./jobs.js"></script>
+</body>
+</html>
