@@ -1,8 +1,10 @@
-    public List<Application> getApplicationsForUser(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
-        return applicationRepository.findByApplicant(user);
-    }
 package com.jobportal.service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jobportal.model.Application;
 import com.jobportal.model.ApplicationStatus;
@@ -12,11 +14,6 @@ import com.jobportal.model.User;
 import com.jobportal.repository.ApplicationRepository;
 import com.jobportal.repository.JobRepository;
 import com.jobportal.repository.UserRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class ApplicationService {
@@ -92,5 +89,10 @@ public class ApplicationService {
             throw new RuntimeException("Invalid status");
         }
         return applicationRepository.save(application);
+    }
+
+    public List<Application> getApplicationsForUser(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        return applicationRepository.findByApplicant(user);
     }
 }

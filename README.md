@@ -28,7 +28,7 @@ curl http://localhost:8080/api/health
 Expected response:
 
 ```json
-{"status":"UP"}
+{ "status": "UP" }
 ```
 
 3. Start frontend static server from `frontend`:
@@ -248,4 +248,3 @@ docker run --name jobportal-db -e POSTGRES_DB=jobportal -e POSTGRES_USER=postgre
 
 - No automated tests yet under `src/test/java`.
 - Resume skill extraction is keyword-based (not NLP ranking).
-

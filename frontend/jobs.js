@@ -8,6 +8,16 @@ logoutBtn.addEventListener('click', () => {
   location.href = 'auth.html';
 });
 
+function formatSalary(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '-';
+  return number.toLocaleString(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0
+  });
+}
+
 function cardHtml(job) {
   const loginHint = getToken() ? '' : '<p class="muted">Login to Apply</p>';
   return `
@@ -15,7 +25,7 @@ function cardHtml(job) {
       <h3>${job.title}</h3>
       <p class="muted">${job.company}</p>
       <p>${job.location}</p>
-      <p><strong>${job.salary ?? '-'}</strong></p>
+      <p><strong>${formatSalary(job.salary)}</strong></p>
       ${loginHint}
     </article>
   `;

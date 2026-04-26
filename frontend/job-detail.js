@@ -13,6 +13,16 @@ const applyResult = document.getElementById('applyResult');
 
 let selectedFile = null;
 
+function formatSalary(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '-';
+  return number.toLocaleString(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0
+  });
+}
+
 function skillsBadges(skillsText) {
   if (!skillsText) return '<span class="muted">No parsed skills</span>';
   return skillsText.split(',').map(s => s.trim()).filter(Boolean)
@@ -31,7 +41,7 @@ async function loadJob() {
       <h1 class="page-title">${job.title}</h1>
       <p class="muted">${job.company}</p>
       <p>${job.location}</p>
-      <p><strong>Salary:</strong> ${job.salary ?? '-'}</p>
+      <p><strong>Salary:</strong> ${formatSalary(job.salary)}</p>
       <p>${job.description || ''}</p>
     `;
 
