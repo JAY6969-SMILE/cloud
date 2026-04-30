@@ -1,12 +1,6 @@
-﻿import { apiFetch, getToken, clearSession } from "./app.js";
+﻿import { apiFetch, getToken } from "./app.js";
 
 const jobsGrid = document.getElementById("jobsGrid");
-const logoutBtn = document.getElementById("logoutBtn");
-
-logoutBtn.addEventListener("click", () => {
-  clearSession();
-  location.href = "auth.html";
-});
 
 function formatSalary(value) {
   const number = Number(value);
