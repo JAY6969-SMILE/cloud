@@ -1,36 +1,38 @@
-﻿import { apiFetch, authHeaders, requireEmployer } from './app.js';
+﻿import { apiFetch, authHeaders, requireEmployer } from "./app.js";
 
 if (requireEmployer()) {
-  const form = document.getElementById('postForm');
-  const msg = document.getElementById('postMsg');
+  const form = document.getElementById("postForm");
+  const msg = document.getElementById("postMsg");
 
   function parseSalary(rawValue) {
-    const normalized = String(rawValue || '').replace(/[$,\s]/g, '');
+    const normalized = String(rawValue || "").replace(/[$,\s]/g, "");
     const value = Number(normalized);
     if (!Number.isFinite(value) || value <= 0) {
-      throw new Error('Please enter a valid salary amount (for example: 50000).');
+      throw new Error(
+        "Please enter a valid salary amount (for example: 50000)."
+      );
     }
     return value;
   }
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    msg.textContent = 'Posting...';
+    msg.textContent = "Posting...";
 
     try {
-      const salary = parseSalary(document.getElementById('salary').value);
+      const salary = parseSalary(document.getElementById("salary").value);
       const body = {
-        title: document.getElementById('title').value.trim(),
-        company: document.getElementById('company').value.trim(),
-        location: document.getElementById('location').value.trim(),
+        title: document.getElementById("title").value.trim(),
+        company: document.getElementById("company").value.trim(),
+        location: document.getElementById("location").value.trim(),
         salary,
-        description: document.getElementById('description').value.trim()
+        description: document.getElementById("description").value.trim()
       };
 
-      const job = await apiFetch('/jobs', {
-        method: 'POST',
+      const job = await apiFetch("/jobs", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           ...authHeaders()
         },
         body: JSON.stringify(body)

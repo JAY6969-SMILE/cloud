@@ -81,12 +81,10 @@ public class ApplicationService {
         if (!job.getPostedBy().getId().equals(employer.getId())) {
             throw new RuntimeException("You can only update applications for your own job");
         }
-        if (status.equals("ACCEPTED")) {
-            application.setStatus(ApplicationStatus.REVIEWED);
-        } else if (status.equals("REJECTED")) {
-            application.setStatus(ApplicationStatus.REJECTED);
-        } else {
-            throw new RuntimeException("Invalid status");
+        switch (status) {
+            case "ACCEPTED" -> application.setStatus(ApplicationStatus.REVIEWED);
+            case "REJECTED" -> application.setStatus(ApplicationStatus.REJECTED);
+            default -> throw new RuntimeException("Invalid status");
         }
         return applicationRepository.save(application);
     }

@@ -1,35 +1,40 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Detail - Job Portal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body data-active-nav="job-detail.html">
-  <div class="grain"></div>
-  <header class="nav" data-site-nav></header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Detail - Job Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-active-nav="job-detail.html">
+    <div class="grain"></div>
+    <header class="nav" data-site-nav></header>
 
-  <main class="container">
-    <section id="jobDetail" class="card"></section>
+    <main class="container">
+      <section id="jobDetail" class="card"></section>
 
-    <section id="applySection" class="card hidden">
-      <h2>Apply with Resume (PDF)</h2>
-      <div id="dropZone" class="dropzone">
-        <p>Drag and drop PDF here, or click to choose file.</p>
-        <input id="resumeInput" type="file" accept="application/pdf" hidden>
-        <p id="fileName" class="muted"></p>
-      </div>
-      <button id="applyBtn" class="btn btn-primary">Submit Application</button>
-      <p id="applyMsg" class="muted"></p>
-      <div id="applyResult"></div>
-    </section>
-  </main>
+      <section id="applySection" class="card hidden">
+        <h2>Apply with Resume (PDF)</h2>
+        <div id="dropZone" class="dropzone">
+          <p>Drag and drop PDF here, or click to choose file.</p>
+          <input id="resumeInput" type="file" accept="application/pdf" hidden />
+          <p id="fileName" class="muted"></p>
+        </div>
+        <button id="applyBtn" class="btn btn-primary">
+          Submit Application
+        </button>
+        <p id="applyMsg" class="muted"></p>
+        <div id="applyResult"></div>
+      </section>
+    </main>
 
-  <script type="module" src="./app.js"></script>
-  <script type="module" src="./job-detail.js"></script>
-</body>
+    <script type="module" src="./app.js"></script>
+    <script type="module" src="./job-detail.js"></script>
+  </body>
 </html>

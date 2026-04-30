@@ -6,18 +6,25 @@
   --text: #e8e8f0;
   --muted: #6b6b80;
   --radius: 0px;
-  --mono: 'DM Mono', monospace;
-  --display: 'Syne', sans-serif;
+  --mono: "DM Mono", monospace;
+  --display: "Syne", sans-serif;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
   animation: fadeUp 0.4s ease both;
   position: relative;
 }
@@ -31,7 +38,13 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
-.nav, .container, .hero-wrap, .marquee { position: relative; z-index: 1; }
+.nav,
+.container,
+.hero-wrap,
+.marquee {
+  position: relative;
+  z-index: 1;
+}
 
 .nav {
   display: flex;
@@ -94,19 +107,28 @@ body {
   font-size: 0.72rem;
 }
 
-.hero-title, .page-title {
+.hero-title,
+.page-title {
   font-family: var(--display);
   font-weight: 800;
   margin: 0.3rem 0;
   line-height: 0.95;
 }
 
-.hero-title { font-size: clamp(3rem, 11vw, 7rem); }
-.page-title { font-size: clamp(2rem, 6vw, 4rem); }
+.hero-title {
+  font-size: clamp(3rem, 11vw, 7rem);
+}
+.page-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
 
-.hero-sub { max-width: 700px; color: #b9b9c9; }
+.hero-sub {
+  max-width: 700px;
+  color: #b9b9c9;
+}
 
-.hero-cta, .row-tight {
+.hero-cta,
+.row-tight {
   display: flex;
   gap: 0.7rem;
   align-items: center;
@@ -136,8 +158,12 @@ body {
   color: var(--amber);
 }
 
-.btn.tiny { padding: 0.45rem 0.7rem; }
-.btn.full { width: 100%; }
+.btn.tiny {
+  padding: 0.45rem 0.7rem;
+}
+.btn.full {
+  width: 100%;
+}
 
 .container {
   max-width: 1120px;
@@ -145,14 +171,19 @@ body {
   padding: 2rem;
 }
 
-.container.narrow { max-width: 700px; }
+.container.narrow {
+  max-width: 700px;
+}
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   padding: 1rem;
   margin-top: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-left 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-left 0.2s ease;
 }
 
 .card:hover {
@@ -167,9 +198,13 @@ body {
   gap: 0.9rem;
 }
 
-.job-card { cursor: pointer; }
+.job-card {
+  cursor: pointer;
+}
 
-.field { margin: 1rem 0; }
+.field {
+  margin: 1rem 0;
+}
 .field label {
   display: block;
   font-family: var(--mono);
@@ -178,7 +213,8 @@ body {
   color: var(--muted);
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   border: none;
   border-bottom: 1px solid #35354a;
@@ -188,15 +224,21 @@ input, textarea {
   padding: 0.6rem 0.2rem;
   outline: none;
   font-size: 0.95rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-bottom: 1px solid var(--amber);
   box-shadow: inset 0 -2px 0 0 var(--amber);
 }
 
-textarea { min-height: 120px; resize: vertical; }
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
 
 .resume-preview {
   white-space: pre-wrap;
@@ -232,8 +274,12 @@ textarea { min-height: 120px; resize: vertical; }
   color: #000;
 }
 
-.hidden { display: none !important; }
-.muted { color: var(--muted); }
+.hidden {
+  display: none !important;
+}
+.muted {
+  color: var(--muted);
+}
 
 .skill-badge {
   display: inline-block;
@@ -263,7 +309,10 @@ textarea { min-height: 120px; resize: vertical; }
   cursor: pointer;
 }
 
-.dropzone.drag { border-color: var(--amber); background: rgba(245, 166, 35, 0.07); }
+.dropzone.drag {
+  border-color: var(--amber);
+  background: rgba(245, 166, 35, 0.07);
+}
 
 .marquee {
   overflow: hidden;
@@ -281,13 +330,16 @@ textarea { min-height: 120px; resize: vertical; }
   animation: scroll 18s linear infinite;
 }
 
-.table-wrap { overflow-x: auto; }
+.table-wrap {
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 0.7rem;
 }
-th, td {
+th,
+td {
   border-bottom: 1px solid var(--border);
   padding: 0.65rem;
   text-align: left;
@@ -308,11 +360,21 @@ th {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

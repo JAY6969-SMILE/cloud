@@ -1,32 +1,53 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post Job - Job Portal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body data-active-nav="post-job.html">
-  <div class="grain"></div>
-  <header class="nav" data-site-nav></header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Job - Job Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-active-nav="post-job.html">
+    <div class="grain"></div>
+    <header class="nav" data-site-nav></header>
 
-  <main class="container narrow">
-    <h1 class="page-title">Post a Job</h1>
-    <form id="postForm" class="card">
-      <div class="field"><label>Title</label><input id="title" required></div>
-      <div class="field"><label>Company</label><input id="company" required></div>
-      <div class="field"><label>Location</label><input id="location" required></div>
-      <div class="field"><label>Salary</label><input id="salary" type="text" inputmode="decimal" placeholder="e.g. 50000 or 50,000" required></div>
-      <div class="field"><label>Description</label><textarea id="description" required></textarea></div>
-      <button class="btn btn-primary full" type="submit">Post Job</button>
-      <p id="postMsg" class="muted"></p>
-    </form>
-  </main>
+    <main class="container narrow">
+      <h1 class="page-title">Post a Job</h1>
+      <form id="postForm" class="card">
+        <div class="field">
+          <label>Title</label><input id="title" required />
+        </div>
+        <div class="field">
+          <label>Company</label><input id="company" required />
+        </div>
+        <div class="field">
+          <label>Location</label><input id="location" required />
+        </div>
+        <div class="field">
+          <label>Salary</label
+          ><input
+            id="salary"
+            type="text"
+            inputmode="decimal"
+            placeholder="e.g. 50000 or 50,000"
+            required
+          />
+        </div>
+        <div class="field">
+          <label>Description</label
+          ><textarea id="description" required></textarea>
+        </div>
+        <button class="btn btn-primary full" type="submit">Post Job</button>
+        <p id="postMsg" class="muted"></p>
+      </form>
+    </main>
 
-  <script type="module" src="./app.js"></script>
-  <script type="module" src="./post-job.js"></script>
-</body>
+    <script type="module" src="./app.js"></script>
+    <script type="module" src="./post-job.js"></script>
+  </body>
 </html>

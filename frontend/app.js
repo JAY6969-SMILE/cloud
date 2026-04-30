@@ -10,45 +10,50 @@ export const clearSession = () => {
 };
 
 function navLinkHtml(href, label, activePath) {
-  const active = activePath && location.pathname.endsWith(activePath) ? ' aria-current="page"' : '';
+  const active =
+    activePath && location.pathname.endsWith(activePath)
+      ? ' aria-current="page"'
+      : "";
   return `<a href="${href}" class="nav-link"${active}>${label}</a>`;
 }
 
-export function renderNavbar(activePath = '') {
-  const navRoot = document.querySelector('[data-site-nav]');
+export function renderNavbar(activePath = "") {
+  const navRoot = document.querySelector("[data-site-nav]");
   if (!navRoot) return;
 
   const token = getToken();
   const role = getRole();
   const authLink = token
     ? `<button type="button" class="nav-link nav-button" data-logout-btn>Logout</button>`
-    : navLinkHtml('./auth.html', 'Login', activePath);
+    : navLinkHtml("./auth.html", "Login", activePath);
 
   navRoot.innerHTML = `
     <a href="./index.html" class="logo">JOBPORTAL</a>
     <div class="nav-links">
-      ${navLinkHtml('./jobs.html', 'Jobs', activePath)}
-      ${navLinkHtml('./resume-parser.html', 'Resume Parser', activePath)}
-      ${role === 'EMPLOYER' ? navLinkHtml('./post-job.html', 'Post Job', activePath) : ''}
-      ${token ? navLinkHtml('./my-applications.html', 'My Applications', activePath) : ''}
-      ${token ? navLinkHtml('./dashboard.html', 'Dashboard', activePath) : ''}
+      ${navLinkHtml("./jobs.html", "Jobs", activePath)}
+      ${navLinkHtml("./resume-parser.html", "Resume Parser", activePath)}
+      ${role === "EMPLOYER" ? navLinkHtml("./post-job.html", "Post Job", activePath) : ""}
+      ${token ? navLinkHtml("./my-applications.html", "My Applications", activePath) : ""}
+      ${token ? navLinkHtml("./dashboard.html", "Dashboard", activePath) : ""}
       ${authLink}
     </div>
   `;
 
-  const logoutBtn = navRoot.querySelector('[data-logout-btn]');
+  const logoutBtn = navRoot.querySelector("[data-logout-btn]");
   if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
+    logoutBtn.addEventListener("click", () => {
       clearSession();
-      location.href = './auth.html';
+      location.href = "./auth.html";
     });
   }
 }
 
-if (document.readyState !== 'loading') {
-  renderNavbar(document.body?.dataset?.activeNav || '');
+if (document.readyState !== "loading") {
+  renderNavbar(document.body?.dataset?.activeNav || "");
 } else {
-  window.addEventListener('DOMContentLoaded', () => renderNavbar(document.body?.dataset?.activeNav || ''));
+  window.addEventListener("DOMContentLoaded", () =>
+    renderNavbar(document.body?.dataset?.activeNav || "")
+  );
 }
 
 export const authHeaders = () => {
