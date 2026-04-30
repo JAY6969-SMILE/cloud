@@ -9,15 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body data-active-nav="jobs.html">
   <div class="grain"></div>
-  <header class="nav">
-    <a href="./index.html" class="logo">JOBPORTAL</a>
-    <div class="row-tight">
-      <a href="./auth.html" class="nav-link">Auth</a>
-      <button id="logoutBtn" class="btn btn-ghost tiny" type="button">Logout</button>
-    </div>
-  </header>
+  <header class="nav" data-site-nav></header>
 
   <main class="container">
     <h1 class="page-title">Open Jobs</h1>
@@ -25,6 +19,7 @@
     <section id="jobsGrid" class="grid"></section>
   </main>
 
+  <script type="module" src="./app.js"></script>
   <script type="module" src="./jobs.js"></script>
 </body>
 </html>

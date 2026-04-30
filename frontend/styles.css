@@ -39,6 +39,16 @@ body {
   align-items: center;
   padding: 1.2rem 2rem;
   border-bottom: 1px solid var(--border);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -57,6 +67,15 @@ body {
   font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
+}
+
+.nav-link[aria-current="page"] {
+  background: var(--amber);
+  color: #000;
+}
+
+.nav-button {
+  background: transparent;
 }
 
 .hero-wrap {
@@ -178,6 +197,18 @@ input:focus, textarea:focus {
 }
 
 textarea { min-height: 120px; resize: vertical; }
+
+.resume-preview {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #0a0a10;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: var(--radius);
+  color: #d8d8e4;
+  max-height: 420px;
+  overflow: auto;
+}
 
 .toggle-pill {
   display: inline-flex;

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Parser - Job Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-active-nav="resume-parser.html">
+  <div class="grain"></div>
+  <header class="nav" data-site-nav></header>
+
+  <main class="container narrow">
+    <h1 class="page-title">Resume Parser</h1>
+    <p class="muted">Upload a PDF resume to extract text and detect skills.</p>
+
+    <form id="resumeForm" class="card">
+      <div class="field">
+        <label>Resume PDF</label>
+        <input id="resumeFile" type="file" accept="application/pdf" required>
+      </div>
+      <button class="btn btn-primary full" type="submit">Parse Resume</button>
+      <p id="resumeMsg" class="muted"></p>
+    </form>
+
+    <section id="resumeOutput" class="card hidden"></section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+  <script type="module" src="./resume-parser.js"></script>
+</body>
+</html>

@@ -9,12 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body data-active-nav="index.html">
   <div class="grain"></div>
-  <header class="nav">
-    <a href="./index.html" class="logo">JOBPORTAL</a>
-    <a href="./auth.html" class="nav-link">Login</a>
-  </header>
+  <header class="nav" data-site-nav></header>
 
   <main class="hero-wrap">
     <p class="kicker">EDITORIAL JOB DISCOVERY PLATFORM</p>
@@ -29,5 +26,7 @@
   <section class="marquee">
     <span>Java · Python · Docker · React · SQL · AWS · Spring · ML · Node · Git · Java · Python · Docker · React · SQL · AWS · Spring · ML · Node · Git · </span>
   </section>
+
+  <script type="module" src="./app.js"></script>
 </body>
 </html>

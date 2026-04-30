@@ -40,6 +40,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return true;
         }
 
+        if (PATH_MATCHER.match("/api/resume/**", path)) {
+            return true;
+        }
+
         if ("/api/info".equals(path) || "/api/health".equals(path)) {
             return true;
         }
